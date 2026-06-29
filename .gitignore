@@ -4,4 +4,5 @@ coverage/
 .DS_Store
 *.log
 .superpowers/
-
+.env*
+!.env.example
