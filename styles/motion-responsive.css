@@ -1,0 +1,97 @@
+@keyframes target-scan {
+  from { opacity: 0; transform: translateX(-20%); }
+  35% { opacity: 1; }
+  to { opacity: 0; transform: translateX(360%); }
+}
+
+@keyframes sigil-ignite { to { stroke-dashoffset: 0; } }
+@keyframes sigil-nodes { to { opacity: 1; } }
+@keyframes card-scan { from { left: -40%; opacity: 0; } 25% { opacity: 1; } to { left: 105%; opacity: 0; } }
+@keyframes skeleton-shimmer { to { background-position: -200% 0; } }
+@keyframes cursor-blink { 50% { opacity: 0.2; } }
+@keyframes terminal-type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+
+@media (max-width: 1100px) {
+  .navbar__desktop { gap: 13px; }
+  .navbar__link { font-size: 11px; }
+  .hero__grid { grid-template-columns: 1fr 0.86fr; gap: 20px; }
+  .hero__title { font-size: clamp(4.7rem, 10vw, 7rem); }
+  .architecture-modules__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .repository-grid, .repository-skeleton { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .protocol-layer { grid-template-columns: 175px 1fr; }
+}
+
+@media (max-width: 820px) {
+  .protocol-section { width: min(100% - 32px, 720px); padding: 84px 0; }
+  .navbar { height: 60px; }
+  .navbar__inner { width: calc(100% - 32px); }
+  .navbar__desktop { display: none; }
+  .navbar__menu-button { display: inline-flex; }
+  .navbar__mobile-locale { display: block; }
+  .hero { width: calc(100% - 32px); padding-top: 80px; }
+  .hero__grid { grid-template-columns: 1fr; padding-top: 28px; }
+  .hero__content { padding-left: 0; }
+  .hero__title { font-size: clamp(4.3rem, 18vw, 7rem); }
+  .hero__visual { margin-top: -14px; }
+  .reactor { max-width: 420px; }
+  .reactor__debris-piece--gold { display: none; }
+  .system-status-bar { display: none; }
+  .protocol-layer, .protocol-layer:nth-child(2), .protocol-layer:nth-child(3) {
+    margin-left: 0;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .architect-plaque { grid-template-columns: 120px minmax(0, 1fr); }
+  .architect-plaque__sigil .forge-sigil { width: 90px; height: 90px; }
+  .channel-terminal__contacts { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .protocol-section { padding: 72px 0; }
+  .section-heading { margin-bottom: 32px; }
+  .section-heading__protocol-line { font-size: 8px; }
+  .section-heading__title { font-size: 2.35rem; }
+  .hero { min-height: auto; padding-bottom: 56px; }
+  .hero__grid { min-height: auto; }
+  .hero__protocol-mark .forge-sigil { width: 34px; height: 34px; }
+  .hero__protocol-mark { font-size: 7px; letter-spacing: 0.14em; }
+  .hero__title { font-size: clamp(4.1rem, 20vw, 6rem); }
+  .hero__theme { letter-spacing: 0.04em; }
+  .hero__lab { font-size: 9px; letter-spacing: 0.09em; }
+  .hero__identity { font-size: 17px; }
+  .hero__badges .protocol-badge:nth-child(n + 3) { display: none; }
+  .hero__actions { align-items: stretch; }
+  .button--primary, .button--ghost { flex: 1; }
+  .button--text { width: 100%; }
+  .boot-sequence span:nth-child(2), .boot-sequence span:nth-child(4) { display: none; }
+  .hero__easter-egg { display: none; }
+  .architecture-modules__grid, .repository-grid, .repository-skeleton { grid-template-columns: 1fr; }
+  .architecture-module { min-height: 280px; }
+  .repository-toolbar { flex-direction: column; }
+  .repository-sort { width: 100%; }
+  .repository-filters { width: 100%; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }
+  .repository-filters button { flex: 0 0 auto; }
+  .project-card { min-height: 320px; }
+  .architect-plaque { min-height: auto; padding: 26px 22px 72px; grid-template-columns: 1fr; }
+  .architect-plaque__sigil { justify-content: flex-start; }
+  .architect-plaque__sigil .forge-sigil { width: 70px; height: 70px; }
+  .architect-plaque__directions { grid-template-columns: 1fr; }
+  .channel-terminal__contacts { padding: 18px; }
+  .channel-terminal__note, .channel-terminal__protocol { padding-right: 18px; padding-left: 18px; }
+  .protocol-footer { width: calc(100% - 32px); grid-template-columns: 1fr; gap: 9px; }
+  .protocol-footer__contract { text-align: left; right: auto; left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .navbar--scrolled, .channel-terminal, .project-card { backdrop-filter: none; background: var(--bg-deep); }
+}

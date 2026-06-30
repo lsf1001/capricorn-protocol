@@ -1,0 +1,182 @@
+import type { Dict } from "@/lib/i18n/types";
+
+/**
+ * 英文文案。所有用户可见的副本在这里集中维护；
+ * 缺 key 时会自动回退到 {@link translate} 内的 fallback 链。
+ */
+export const en: Dict = {
+  common: {
+    appName: "0xForge · Capricorn Protocol",
+    repositoryTitle: "Repository Constellation",
+    repositoryLoadingDescription:
+      "Public GitHub repositories mapped as a forest of technology nodes — every clearing holds an experiment, tool, or a system in progress.",
+  },
+  nav: {
+    home: "Home",
+    architecture: "Architecture",
+    repositories: "Repositories",
+    stack: "Protocol Stack",
+    about: "About",
+    contact: "Contact",
+    brandAria: "0xForge · Home",
+    desktopAria: "Primary navigation",
+    mobileAria: "Mobile navigation",
+    menuOpen: "Open navigation menu",
+    menuClose: "Close navigation menu",
+    statusActive: "ACTIVE",
+    statusOpen: "OPEN",
+    statusExternal: "EXTERNAL",
+    localeToggle: "Language",
+    localeToggleAria: "Switch language",
+    localeSwitchTo: "Switch to {label}",
+  },
+  hero: {
+    protocolMark: "CAPRICORN PROTOCOL INITIALIZED",
+    protocolMeta: "0xA7F · 2026",
+    brandPrefix: "CAPRICORN PROTOCOL · 2026",
+    brandValue: "Capricorn Protocol",
+    titleAccessible: "Laobai",
+    identityBlockchain: "Blockchain Architect",
+    identityAi: "AI Architect",
+    labPrefixEn: "EN",
+    labTextEn: "AI × Blockchain Architecture Lab",
+    labPrefixCn: "CN",
+    labTextCn: "Laobai's Trustworthy Intelligence Lab",
+    statement:
+      "Build trustworthy intelligent systems — forge AI agents, on-chain data, smart contracts and engineering into production-grade machinery.",
+    ctaRepos: "View Projects",
+    ctaGithub: "GitHub",
+    ctaContact: "Contact",
+    feedbackRepos: "ROUTING TO REPOSITORY CONSTELLATION",
+    feedbackGithub: "OPENING GITHUB NODE",
+    feedbackContact: "OPENING CHANNEL",
+    bootlogLabel: "SYSTEM BOOTLOG",
+    bootlogAria: "System boot status",
+    bootLine1: "> initializing laobai identity...",
+    bootLine2: "> binding 0xForge lab context...",
+    bootLine3: "> syncing chain nodes...",
+    bootLine4: "> system ready.",
+    visualLabel: "COVENANT REACTOR · ACTIVE",
+    visualStatus: "SIGNING · 0xCAPRICORN",
+  },
+  heading: {
+    architecture: "Architecture Modules",
+    repositories: "Repository Constellation",
+    stack: "Protocol Stack",
+    about: "About the Architect",
+    contact: "Open Channel",
+  },
+  module: {
+    aiTitle: "AI Architecture",
+    aiDesc:
+      "Design LLM applications, RAG, AI agents, multi-model collaboration and local intelligence systems — bring model capabilities into real business workflows.",
+    aiStatus: "STATUS: ACTIVE",
+    chainTitle: "Blockchain Architecture",
+    chainDesc:
+      "Focus on on-chain systems, smart contracts, on-chain data, wallet interactions and trusted business networks — build traceable, verifiable digital systems.",
+    chainStatus: "STATUS: VERIFIED",
+    agentTitle: "Agent Engineering",
+    agentDesc:
+      "Combine tool calling, task orchestration, memory systems and automation workflows with business systems — push agents from chat into production.",
+    agentStatus: "STATUS: ROUTING",
+    dataTitle: "Data-driven Products",
+    dataDesc:
+      "Use data modeling, feature engineering, explainable analysis and feedback loops to power pricing, decisions and growth systems.",
+    dataStatus: "STATUS: LEARNING",
+  },
+  stack: {
+    aiAria: "AI Layer technologies",
+    chainAria: "Chain Layer technologies",
+    engineeringAria: "Engineering Layer technologies",
+  },
+  repo: {
+    githubRepoCard: {
+      type: "REPOSITORY NODE",
+      nodePrefix: "NODE /",
+      topicsAria: "Repository topics",
+      updatedAt: "Updated {date}",
+      viewOnGithub: "View {name} on GitHub",
+      viewHomepage: "Visit {name} homepage",
+      githubLabel: "GitHub",
+      liveLabel: "Live",
+    },
+    lang: {
+      all: "All",
+      ts: "TypeScript",
+      js: "JavaScript",
+      python: "Python",
+      java: "Java",
+      solidity: "Solidity",
+      go: "Go",
+      rust: "Rust",
+      other: "Other",
+    },
+    toolbarAria: "Filter by programming language",
+    sortAria: "Repository sort",
+    sortUpdated: "Recently updated",
+    sortStars: "Most stars",
+    sortName: "Sort by name",
+    emptyTitle: "No public repositories to display.",
+    emptyHint:
+      "Adjust the language filter, or reconnect the constellation in a moment.",
+    overlayTitle: "FOREST OF REPOSITORIES",
+    clearingOne: "{count} clearing",
+    clearingOther: "{count} clearings",
+    nodesAria: "Repository nodes",
+    forestAria: "Forest map of repositories",
+    viewDetails: "View {name} details",
+    drawerAria: "{name} details",
+    closeAria: "Close",
+    errorTitle:
+      "GitHub constellation is temporarily offline, but the lab is still running.",
+    errorHint:
+      "The public repository connection will retry on the next protocol refresh.",
+    constellationDescription:
+      "Public GitHub repositories mapped as a forest of technology nodes — every clearing holds an experiment, tool, or a system in progress.",
+  },
+  about: {
+    lead: "I am Laobai — blockchain architect × AI architect.",
+    intro:
+      "My focus is not the model leaderboard or Web3 narratives. It is how technology enters real systems.",
+    questions: `How AI meets business,
+How agents run reliably,
+How on-chain data is analysed,
+How smart contracts serve real workflows,
+How model outputs are explained,
+How system cost is controlled.`,
+    directionLabel: "Core research directions:",
+    directionsAria: "Core research directions",
+    creed: "Capricorn engineering creed: less conceptual noise, more system certainty.",
+    contractHashLabel: "Capricorn contract hash",
+    contractHash: "0xCAPRICORN-ARCHITECT-2026",
+  },
+  open: {
+    githubLabel: "GitHub",
+    emailLabel: "Email",
+    wechatLabel: "WeChat",
+    wechatPrivate: "Private",
+    note: "For collaboration, please reach out via GitHub or email.",
+    protocolAria: "Connection protocol status",
+    protocolStatus: "> connection.status = open",
+    protocolGithub: "> github.node = {handle}",
+    protocolCollaboration: "> collaboration.mode = async",
+    protocolName: "> protocol = capricorn",
+    protocolContact: "> contact.email = {email}",
+    protocolWechat: "> wechat = private",
+  },
+  footer: {
+    copyright: "© 2026 0xForge. Built by Laobai.",
+    interface: "Capricorn Protocol Interface",
+    contractHashLabel: "Capricorn contract hash",
+  },
+  metadata: {
+    title: "Laobai | 0xForge · Capricorn Protocol",
+    description:
+      "Laobai's AI × Blockchain architecture lab 0xForge: build trustworthy intelligent systems — forge AI agents, on-chain data, smart contracts and engineering into production-grade machinery. Capricorn Protocol.",
+    ogDescription:
+      "AI × Blockchain architecture lab — forging models, chains and engineering into trustworthy intelligent systems.",
+    twitterTitle: "Laobai | 0xForge · Capricorn Protocol",
+    twitterDescription:
+      "AI × Blockchain architecture lab — entry point for trustworthy intelligence systems.",
+  },
+};
