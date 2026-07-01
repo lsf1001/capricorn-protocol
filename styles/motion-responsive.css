@@ -19,6 +19,9 @@
   .architecture-modules__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .repository-grid, .repository-skeleton { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .protocol-layer { grid-template-columns: 175px 1fr; }
+  .services-section__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .case-card { padding: 26px 24px; }
+  .case-card__title { font-size: 17px; }
 }
 
 @media (max-width: 820px) {
@@ -44,6 +47,10 @@
   .architect-plaque { grid-template-columns: 120px minmax(0, 1fr); }
   .architect-plaque__sigil .forge-sigil { width: 90px; height: 90px; }
   .channel-terminal__contacts { grid-template-columns: 1fr; }
+  .service-card { min-height: 320px; padding: 22px 20px; }
+  .service-card__title { font-size: 17px; }
+  .case-card { padding: 24px 22px; }
+  .case-card__header { gap: 10px; }
 }
 
 @media (max-width: 640px) {
@@ -80,6 +87,12 @@
   .channel-terminal__note, .channel-terminal__protocol { padding-right: 18px; padding-left: 18px; }
   .protocol-footer { width: calc(100% - 32px); grid-template-columns: 1fr; gap: 9px; }
   .protocol-footer__contract { text-align: left; right: auto; left: 0; }
+  .services-section__grid { grid-template-columns: 1fr; }
+  .service-card { min-height: auto; }
+  .case-card { padding: 22px 18px; }
+  .case-card__row { grid-template-columns: 1fr; gap: 6px; padding: 12px 0; }
+  .case-card__row dt { font-size: 9px; }
+  .case-card__row dd { font-size: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -94,4 +107,7 @@
 
 @media (prefers-reduced-transparency: reduce) {
   .navbar--scrolled, .channel-terminal, .project-card { backdrop-filter: none; background: var(--bg-deep); }
+  .architect-plaque, .case-card, .service-card, .channel-terminal__brief {
+    backdrop-filter: none;
+  }
 }
