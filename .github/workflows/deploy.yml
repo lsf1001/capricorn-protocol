@@ -1,7 +1,7 @@
 name: Deploy to Vercel
 
 # 推送到 main 时自动部署到 Vercel production。
-# PR 也会拿到一个 preview URL(amondnet/vercel-action 默认行为)。
+# PR 也会拿到一个 preview URL(默认走 Vercel 的 preview 通道)。
 on:
   push:
     branches: [main]
@@ -9,7 +9,7 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# GHA 不会自动取消正在跑的同 workflow(允许多个 deploy 并行,各自独立环境)。
+# 同一 workflow 同一 ref 上只跑一个,新 push 取消旧 run 避免双部署。
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
@@ -23,13 +23,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
+      - name: Setup Node 24
+        uses: actions/setup-node@v4
         with:
-          # 三个 Vercel 凭据都从 GitHub Secrets 读;在 repo 的
-          # Settings → Secrets and variables → Actions 里维护。
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          # 不传 vercel-args:action 默认就是 `--prod --confirm` 生产部署。
-          # 仓库根就是 Next.js 项目根,不需要指定 working-directory。
+          node-version: 24
+
+      # 走官方 vercel CLI 而不是第三方 action,这样 Vercel API 升级
+      # vercel CLI 时我们不用 bump action 的 pin。Pin 在 main 通常落后
+      # 实际 CLI 半年以上,容易撞到 "Your Vercel CLI version is outdated"。
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Deploy to Vercel production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        # `--yes` 跳过交互确认(若本地没 link 过,vercel CLI 会按
+        # VERCEL_PROJECT_ID 自动 link 到 Vercel 上的同名 project)。
+        # 仓库根就是 Next.js 项目根,不需要 working-directory。
+        run: vercel deploy --prod --yes --token "$VERCEL_TOKEN"
