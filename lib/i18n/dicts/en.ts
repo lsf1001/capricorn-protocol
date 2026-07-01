@@ -65,29 +65,10 @@ export const en: Dict = {
     visualStatus: "SIGNING · 0xCONTRACT-OPEN",
   },
   heading: {
-    architecture: "Services",
     repositories: "Project Constellation",
     stack: "Stack",
     about: "About",
     contact: "Hire Me",
-  },
-  module: {
-    aiTitle: "AI Architecture",
-    aiDesc:
-      "Design LLM applications, RAG, AI agents, multi-model collaboration and local intelligence systems — bring model capabilities into real business workflows.",
-    aiStatus: "STATUS: ACTIVE",
-    chainTitle: "Blockchain Architecture",
-    chainDesc:
-      "Focus on on-chain systems, smart contracts, on-chain data, wallet interactions and trusted business networks — build traceable, verifiable digital systems.",
-    chainStatus: "STATUS: VERIFIED",
-    agentTitle: "Agent Engineering",
-    agentDesc:
-      "Combine tool calling, task orchestration, memory systems and automation workflows with business systems — push agents from chat into production.",
-    agentStatus: "STATUS: ROUTING",
-    dataTitle: "Data-driven Products",
-    dataDesc:
-      "Use data modeling, feature engineering, explainable analysis and feedback loops to power pricing, decisions and growth systems.",
-    dataStatus: "STATUS: LEARNING",
   },
   services: {
     title: "Services",

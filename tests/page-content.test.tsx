@@ -35,7 +35,6 @@ describe("页面结构", () => {
       </I18nHarness>,
     );
     expect(container.querySelector("#home")).toBeInTheDocument();
-    expect(container.querySelector("#architecture")).toBeInTheDocument();
     expect(container.querySelector("#services")).toBeInTheDocument();
     expect(container.querySelector("#cases")).toBeInTheDocument();
     expect(container.querySelector("#repositories")).toBeInTheDocument();

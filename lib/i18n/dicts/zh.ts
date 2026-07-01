@@ -64,29 +64,10 @@ export const zh: Dict = {
     visualStatus: "SIGNING · 0xCONTRACT-OPEN",
   },
   heading: {
-    architecture: "服务",
     repositories: "项目星图",
     stack: "技术栈",
     about: "关于我",
     contact: "谈需求",
-  },
-  module: {
-    aiTitle: "AI 架构",
-    aiDesc:
-      "设计 LLM 应用、RAG、AI Agent、多模型协作与本地智能系统，让模型能力进入真实业务流程。",
-    aiStatus: "STATUS: ACTIVE",
-    chainTitle: "区块链架构",
-    chainDesc:
-      "关注链上系统、智能合约、链上数据、钱包交互与可信业务网络，构建可追踪、可验证的数字系统。",
-    chainStatus: "STATUS: VERIFIED",
-    agentTitle: "Agent 工程",
-    agentDesc:
-      "将工具调用、任务编排、记忆系统、自动化工作流与业务系统结合，让 Agent 从聊天框走向生产环境。",
-    agentStatus: "STATUS: ROUTING",
-    dataTitle: "数据驱动产品",
-    dataDesc:
-      "用数据建模、特征工程、可解释性分析和业务反馈闭环，支撑定价、决策和增长系统。",
-    dataStatus: "STATUS: LEARNING",
   },
   services: {
     title: "服务",

@@ -16,7 +16,6 @@
   .navbar__link { font-size: 11px; }
   .hero__grid { grid-template-columns: 1fr 0.86fr; gap: 20px; }
   .hero__title { font-size: clamp(4.7rem, 10vw, 7rem); }
-  .architecture-modules__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .repository-grid, .repository-skeleton { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .protocol-layer { grid-template-columns: 175px 1fr; }
   .services-section__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -72,8 +71,7 @@
   .button--text { width: 100%; }
   .boot-sequence span:nth-child(2), .boot-sequence span:nth-child(4) { display: none; }
   .hero__easter-egg { display: none; }
-  .architecture-modules__grid, .repository-grid, .repository-skeleton { grid-template-columns: 1fr; }
-  .architecture-module { min-height: 280px; }
+  .repository-grid, .repository-skeleton { grid-template-columns: 1fr; }
   .repository-toolbar { flex-direction: column; }
   .repository-sort { width: 100%; }
   .repository-filters { width: 100%; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }

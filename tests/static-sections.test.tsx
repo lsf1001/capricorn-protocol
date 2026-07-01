@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { AboutArchitect } from "@/components/AboutArchitect";
-import { ArchitectureModules } from "@/components/ArchitectureModules";
+import { CaseStudies } from "@/components/CaseStudies";
 import { Footer } from "@/components/Footer";
 import { ForgeSigil } from "@/components/ForgeSigil";
 import { OpenChannel } from "@/components/OpenChannel";
@@ -10,6 +10,7 @@ import { ProtocolBadge } from "@/components/ProtocolBadge";
 import { ProtocolStack } from "@/components/ProtocolStack";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SectionReveal } from "@/components/SectionReveal";
+import { ServicesSection } from "@/components/ServicesSection";
 
 import { I18nHarness } from "@/tests/helpers/i18n-wrapper";
 
@@ -89,22 +90,28 @@ describe("协议视觉原语", () => {
 });
 
 describe("静态协议模块", () => {
-  it("呈现四个架构模块及其状态", () => {
-    render(withLocale(<ArchitectureModules />));
+  it("呈现四个接活服务卡片与首屏 CTA", () => {
+    render(withLocale(<ServicesSection />));
 
-    const expected_modules = [
-      ["AI Architecture", "STATUS: ACTIVE"],
-      ["Blockchain Architecture", "STATUS: VERIFIED"],
-      ["Agent Engineering", "STATUS: ROUTING"],
-      ["Data-driven Products", "STATUS: LEARNING"],
-    ];
+    expect(screen.getByRole("heading", { name: "Services" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /AI Agent Harness/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Multimodal RAG/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Data Governance/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /On-device AI/i })).toBeInTheDocument();
+    expect(screen.getByText("NDA-friendly · 48h reply · remote-first")).toBeInTheDocument();
+    expect(screen.getByText("Reference: Nexus (open source)")).toBeInTheDocument();
+  });
 
-    for (const [title, status] of expected_modules) {
-      const module_title = screen.getByRole("heading", { name: title });
-      const module_card = module_title.closest("article");
-      expect(module_card).not.toBeNull();
-      expect(within(module_card as HTMLElement).getByText(status)).toBeInTheDocument();
-    }
+  it("呈现四个案例卡(open source 案例带 GitHub 链接)", () => {
+    render(withLocale(<CaseStudies />));
+
+    expect(screen.getByRole("heading", { name: /Nexus/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Furion/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /qiqi-voice/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /National-pilot/i })).toBeInTheDocument();
+
+    const github_links = screen.getAllByRole("link", { name: /View on GitHub/i });
+    expect(github_links.length).toBe(3);
   });
 
   it("呈现完整的 AI、Chain 与 Engineering 协议栈(英文)", () => {

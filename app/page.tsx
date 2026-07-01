@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 
 import { AboutArchitect } from "@/components/AboutArchitect";
-import { ArchitectureModules } from "@/components/ArchitectureModules";
 import { CapricornProtocolBackground } from "@/components/CapricornProtocolBackground";
 import { CaseStudies } from "@/components/CaseStudies";
 import { CursorAura } from "@/components/CursorAura";
@@ -46,7 +45,6 @@ export default function Page(): React.JSX.Element {
       <Navbar />
       <main className="site-main">
         <Hero />
-        <ArchitectureModules />
         <ServicesSection />
         <CaseStudies />
         <section id="repositories" className="protocol-section" aria-label={t_server("en", "heading.repositories")}>
