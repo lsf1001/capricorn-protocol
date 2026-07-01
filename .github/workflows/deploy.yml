@@ -31,6 +31,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          # 默认 production 部署(对应 `vercel --prod`)。
-          vercel-args: '--yes'
+          # 不传 vercel-args:action 默认就是 `--prod --confirm` 生产部署。
           # 仓库根就是 Next.js 项目根,不需要指定 working-directory。
