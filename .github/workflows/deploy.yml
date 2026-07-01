@@ -1,0 +1,36 @@
+name: Deploy to Vercel
+
+# 推送到 main 时自动部署到 Vercel production。
+# PR 也会拿到一个 preview URL(amondnet/vercel-action 默认行为)。
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# GHA 不会自动取消正在跑的同 workflow(允许多个 deploy 并行,各自独立环境)。
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: vercel-deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          # 三个 Vercel 凭据都从 GitHub Secrets 读;在 repo 的
+          # Settings → Secrets and variables → Actions 里维护。
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          # 默认 production 部署(对应 `vercel --prod`)。
+          vercel-args: '--yes'
+          # 仓库根就是 Next.js 项目根,不需要指定 working-directory。
