@@ -11,11 +11,14 @@ import Page, * as page_module from "@/app/page";
 import { I18nHarness } from "@/tests/helpers/i18n-wrapper";
 
 describe("站点 Metadata", () => {
-  it("声明 Laobai 品牌标题与英文架构实验室描述", () => {
-    expect(metadata.title).toBe("Laobai | 0xForge · Capricorn Protocol");
-    expect(metadata.description).toContain("AI × Blockchain architecture lab");
+  it("声明 Laobai 品牌标题与接活模式描述", () => {
+    const raw_title = metadata.title as { default?: string } | string | undefined;
+    const title = typeof raw_title === "string" ? raw_title : (raw_title?.default ?? "");
+    expect(title).toBe("Laobai · AI × Blockchain Architect · Open to Contracts");
+    expect(metadata.description).toContain("令帅锋");
+    expect(metadata.description).toContain("Open to contracts");
     expect(metadata.keywords).toContain("AI Architect");
-    expect(metadata.keywords).toContain("Trustworthy Intelligence");
+    expect(metadata.keywords).toContain("Open to Contracts");
   });
 });
 
@@ -33,12 +36,14 @@ describe("页面结构", () => {
     );
     expect(container.querySelector("#home")).toBeInTheDocument();
     expect(container.querySelector("#architecture")).toBeInTheDocument();
+    expect(container.querySelector("#services")).toBeInTheDocument();
+    expect(container.querySelector("#cases")).toBeInTheDocument();
     expect(container.querySelector("#repositories")).toBeInTheDocument();
     expect(container.querySelector("#stack")).toBeInTheDocument();
     expect(container.querySelector("#about")).toBeInTheDocument();
     expect(container.querySelector("#contact")).toBeInTheDocument();
     expect(screen.getByText("Repository stub")).toBeInTheDocument();
-    expect(screen.getByText("© 2026 0xForge. Built by Laobai.")).toBeInTheDocument();
+    expect(screen.getByText("© 2026 0xForge · Laobai. Open to contracts.")).toBeInTheDocument();
   });
 
   it("根布局默认声明英文 html lang", () => {

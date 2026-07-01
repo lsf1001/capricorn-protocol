@@ -7,11 +7,48 @@ import { SectionReveal } from "@/components/SectionReveal";
 import { useI18n } from "@/components/I18nProvider";
 import { CONTACT_EMAIL, GITHUB_PROFILE_URL, GITHUB_USERNAME } from "@/lib/profile";
 
+const BRIEF_FIELDS = [
+  { labelKey: "open.briefType", hintKey: "open.briefTypeHint" },
+  { labelKey: "open.briefBudget", hintKey: "open.briefBudgetHint" },
+  { labelKey: "open.briefTimeline", hintKey: "open.briefTimelineHint" },
+  { labelKey: "open.briefStack", hintKey: "open.briefStackHint" },
+] as const;
+
+function build_brief_mailto(locale: string, email: string, briefLabel: string): string {
+  const subject = locale === "zh"
+    ? "[接活询价] 项目简述"
+    : "[Contract Brief] Project Brief";
+  const body = locale === "zh"
+    ? `你好 老白,
+
+我把项目信息整理如下:
+
+1) 项目类型:
+2) 预算区间:
+3) 期望时间:
+4) 技术栈 / 约束:
+
+— ${briefLabel}`
+    : `Hi Laobai,
+
+Here's the project brief:
+
+1) Project type:
+2) Budget range:
+3) Timeline:
+4) Stack & constraints:
+
+— ${briefLabel}`;
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 /**
- * 渲染开放连接终端及公开联系入口。
+ * 渲染开放连接终端 + 询价模板(让私活客户能直接发邮件)。
  */
 export function OpenChannel(): React.JSX.Element {
-  const { t } = useI18n();
+  const { locale, t } = useI18n();
+  const briefLabel = t("open.briefLabel");
+  const mailto = build_brief_mailto(locale, CONTACT_EMAIL, briefLabel);
   return (
     <section className="protocol-section open-channel" id="contact">
       <SectionHeading index="[05]" eyebrow="OPEN CHANNEL" title={t("heading.contact")} />
@@ -38,7 +75,7 @@ export function OpenChannel(): React.JSX.Element {
                 <Mail aria-hidden="true" size={16} /> {t("open.emailLabel")}:
               </dt>
               <dd>
-                <a href={`mailto:${CONTACT_EMAIL}`} data-cursor="link">
+                <a href={mailto} data-cursor="link">
                   {CONTACT_EMAIL}
                 </a>
               </dd>
@@ -49,6 +86,28 @@ export function OpenChannel(): React.JSX.Element {
             </div>
           </dl>
           <p className="channel-terminal__note">{t("open.note")}</p>
+
+          <section className="channel-terminal__brief" aria-labelledby="open-channel-brief-heading">
+            <header className="channel-terminal__brief-head">
+              <span id="open-channel-brief-heading" className="channel-terminal__brief-eyebrow">
+                {briefLabel}
+              </span>
+            </header>
+            <p className="channel-terminal__brief-help">{t("open.briefHelp")}</p>
+            <dl className="channel-terminal__brief-grid">
+              {BRIEF_FIELDS.map((field) => (
+                <div key={field.labelKey} className="channel-terminal__brief-cell">
+                  <dt>{t(field.labelKey)}</dt>
+                  <dd>{t(field.hintKey)}</dd>
+                </div>
+              ))}
+            </dl>
+            <a className="channel-terminal__brief-cta" href={mailto} data-cursor="link">
+              <Mail aria-hidden="true" size={14} strokeWidth={1.5} />
+              <span>{t("open.briefEmailCta")}</span>
+            </a>
+          </section>
+
           <div className="channel-terminal__protocol" aria-label={t("open.protocolAria")}>
             <p>{t("open.protocolStatus")}</p>
             <p>{t("open.protocolGithub", { handle: GITHUB_USERNAME })}</p>

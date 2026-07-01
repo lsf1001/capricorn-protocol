@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { AboutArchitect } from "@/components/AboutArchitect";
 import { ArchitectureModules } from "@/components/ArchitectureModules";
 import { CapricornProtocolBackground } from "@/components/CapricornProtocolBackground";
+import { CaseStudies } from "@/components/CaseStudies";
 import { CursorAura } from "@/components/CursorAura";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -12,6 +13,7 @@ import { ProtocolStack } from "@/components/ProtocolStack";
 import { RepositoryConstellationSection } from "@/components/RepositoryConstellationSection";
 import { RepositorySkeleton } from "@/components/RepositorySkeleton";
 import { SectionHeading } from "@/components/SectionHeading";
+import { ServicesSection } from "@/components/ServicesSection";
 import { t_server } from "@/lib/i18n/server";
 
 export const revalidate = 3600;
@@ -45,6 +47,8 @@ export default function Page(): React.JSX.Element {
       <main className="site-main">
         <Hero />
         <ArchitectureModules />
+        <ServicesSection />
+        <CaseStudies />
         <section id="repositories" className="protocol-section" aria-label={t_server("en", "heading.repositories")}>
           <Suspense fallback={<RepositoryLoadingSection />}>
             <RepositoryConstellationSection />

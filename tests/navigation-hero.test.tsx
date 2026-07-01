@@ -58,7 +58,7 @@ describe("Navbar", () => {
         <Navbar />
       </I18nHarness>,
     );
-    expect(screen.getByRole("link", { name: "Repositories" })).toHaveAttribute("href", "#repositories");
+    expect(screen.getByRole("link", { name: "Projects" })).toHaveAttribute("href", "#repositories");
     expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute("href", "https://github.com/lsf1001");
   });
 
@@ -73,7 +73,7 @@ describe("Navbar", () => {
       </I18nHarness>,
     );
 
-    fireEvent.click(screen.getByRole("link", { name: "Repositories" }));
+    fireEvent.click(screen.getByRole("link", { name: "Projects" }));
 
     expect(target.scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth", block: "start" });
     expect(target).toHaveClass("section-scan-active");
@@ -82,20 +82,20 @@ describe("Navbar", () => {
 });
 
 describe("Hero", () => {
-  it("展示主标题、品牌定位和三个主要操作(英文)", () => {
+  it("展示主标题、品牌定位和接活入口的四个主要操作(英文)", () => {
     render(
       <I18nHarness>
         <Hero />
       </I18nHarness>,
     );
-    expect(screen.getByRole("heading", { name: "Laobai", level: 1 })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Blockchain Architect.*AI Architect/ })).toBeInTheDocument();
-    expect(screen.getByText("Capricorn Protocol")).toBeInTheDocument();
-    expect(screen.getByText("Laobai's Trustworthy Intelligence Lab")).toBeInTheDocument();
-    expect(screen.getByText("AI × Blockchain Architecture Lab")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "View Projects" })).toHaveAttribute("href", "#repositories");
+    expect(
+      screen.getByRole("heading", { name: /I take AI × Blockchain contracts\./ }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("LAOBAI · CONTRACTING")).toBeInTheDocument();
+    expect(screen.getByText("CAPRICORN PROTOCOL · HIRING MODE")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "View Services" })).toHaveAttribute("href", "#services");
+    expect(screen.getByRole("link", { name: "Case Studies" })).toHaveAttribute("href", "#cases");
     expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute("href", "https://github.com/lsf1001");
-    expect(screen.getByRole("link", { name: "Contact" })).toHaveAttribute("href", "#contact");
-    expect(screen.getByText("CAPRICORN PROTOCOL INITIALIZED")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Hire Me" })).toHaveAttribute("href", "#contact");
   });
 });

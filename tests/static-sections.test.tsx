@@ -118,15 +118,17 @@ describe("静态协议模块", () => {
     expect(screen.getByText("Production-grade Delivery")).toBeInTheDocument();
   });
 
-  it("呈现架构师介绍、研究方向和契约 hash", () => {
+  it("呈现架构师介绍、常用工具和契约 hash", () => {
     render(withLocale(<AboutArchitect />));
 
-    expect(screen.getByText("I am Laobai — blockchain architect × AI architect.")).toBeInTheDocument();
-    expect(screen.getByText("AI Agent engineering")).toBeInTheDocument();
     expect(
-      screen.getByText("Capricorn engineering creed: less conceptual noise, more system certainty."),
+      screen.getByText(/7 years of building production AI × Blockchain systems/),
     ).toBeInTheDocument();
-    expect(screen.getByText("0xCAPRICORN-ARCHITECT-2026")).toBeInTheDocument();
+    expect(screen.getByText(/LangGraph \/ DeepAgents/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Less conceptual noise, more system certainty\./),
+    ).toBeInTheDocument();
+    expect(screen.getByText("0xLAOBAI-CONTRACTOR-2026")).toBeInTheDocument();
   });
 
   it("提供可点击的 GitHub 与邮箱连接", () => {
@@ -138,10 +140,10 @@ describe("静态协议模块", () => {
     );
     expect(screen.getByRole("link", { name: "yexiaobai1001@gmail.com" })).toHaveAttribute(
       "href",
-      "mailto:yexiaobai1001@gmail.com",
+      expect.stringMatching(/^mailto:yexiaobai1001@gmail\.com\?/),
     );
-    expect(screen.getByText("> wechat = private")).toBeInTheDocument();
-    expect(screen.getByText("Private")).toBeInTheDocument();
+    expect(screen.getByText("> wechat = on_request")).toBeInTheDocument();
+    expect(screen.getByText("By request")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "https://github.com/lsf1001" })).toHaveAttribute(
       "rel",
       "noreferrer",
@@ -151,8 +153,8 @@ describe("静态协议模块", () => {
   it("呈现 2026 年版权与协议界面名称", () => {
     render(withLocale(<Footer />));
 
-    expect(screen.getByText("© 2026 0xForge. Built by Laobai.")).toBeInTheDocument();
+    expect(screen.getByText("© 2026 0xForge · Laobai. Open to contracts.")).toBeInTheDocument();
     expect(screen.getByText("Capricorn Protocol Interface")).toBeInTheDocument();
-    expect(screen.getByText("0xCAPRICORN-ARCHITECT-2026")).toBeInTheDocument();
+    expect(screen.getByText("0xLAOBAI-CONTRACTOR-2026")).toBeInTheDocument();
   });
 });

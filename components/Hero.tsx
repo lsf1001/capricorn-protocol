@@ -175,10 +175,17 @@ export function Hero(): React.JSX.Element {
           <div className="hero__actions">
             <MagneticButton
               variant="primary"
-              href="#repositories"
+              href="#services"
               feedback={t("hero.feedbackRepos")}
             >
               {t("hero.ctaRepos")}
+            </MagneticButton>
+            <MagneticButton
+              variant="text"
+              href="#cases"
+              feedback={t("hero.feedbackCase")}
+            >
+              {t("hero.ctaCase")}
             </MagneticButton>
             <MagneticButton
               variant="github"
